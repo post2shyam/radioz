@@ -24,19 +24,19 @@ class RadioListAdapter(private val radioStations: List<RadioStationModel>) :
     }
 
 
-    inner class RadioItemViewHolder(private val itemBinding: RadioListItemBinding) :
-        RecyclerView.ViewHolder(itemBinding.root) {
+    inner class RadioItemViewHolder(private val radioItemViewBinding: RadioListItemBinding) :
+        RecyclerView.ViewHolder(radioItemViewBinding.root) {
 
         private val TAG: String = RadioItemViewHolder::class.java.name
 
         init {
-            itemBinding.radioItem.setOnClickListener(View.OnClickListener {
+            radioItemViewBinding.radioItem.setOnClickListener(View.OnClickListener {
                 Log.e(TAG, ": ")
             })
         }
 
         fun updateUi(radioStationModel: RadioStationModel) {
-            itemBinding.radioItem.text = radioStationModel.name
+            radioItemViewBinding.radioItem.text = radioStationModel.name
         }
     }
 }

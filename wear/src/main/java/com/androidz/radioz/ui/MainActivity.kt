@@ -24,7 +24,13 @@ class MainActivity : Activity() {
         return listOf(
             RadioStationModel("First Station"),
             RadioStationModel("Second Station"),
-            RadioStationModel("Third Station")
+            RadioStationModel("Third Station"),
+            RadioStationModel("4 Station"),
+            RadioStationModel("5 Station"),
+            RadioStationModel("6 Station"),
+            RadioStationModel("7 Station"),
+            RadioStationModel("8 Station"),
+            RadioStationModel("9 Station")
         )
     }
 }
