@@ -35,7 +35,7 @@ class RadioListAdapter(
                     Timber.d("Clicked: ${radioItem.text}")
                     //TODO: Send a hardcoded URI as of now, stop() seems not to work
                     radioPlayer.stop()
-                    radioPlayer.setUrl("http://kastos.cdnstream.com/1345_32")
+                    radioPlayer.setUrl("https://0n-90s.radionetz.de/0n-90s.mp3?listening-from-radio-garden=1651757650")
                     radioPlayer.play()
                 }
             }
