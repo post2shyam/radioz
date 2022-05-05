@@ -6,8 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidz.radioz.databinding.RadioListItemBinding
 import timber.log.Timber
 
-class RadioListAdapter(private val radioStations: List<RadioStationModel>) :
-    RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
+class RadioListAdapter(
+    private val radioPlayer: RadioPlayer,
+    private val radioStations: List<RadioStationModel>
+) : RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val viewBinding = RadioListItemBinding.inflate(layoutInflater, parent, false)
@@ -30,6 +33,10 @@ class RadioListAdapter(private val radioStations: List<RadioStationModel>) :
             with(radioItemViewBinding) {
                 radioItem.setOnClickListener {
                     Timber.d("Clicked: ${radioItem.text}")
+                    //TODO: Send a hardcoded URI as of now, stop() seems not to work
+                    radioPlayer.stop()
+                    radioPlayer.setUrl("http://kastos.cdnstream.com/1345_32")
+                    radioPlayer.play()
                 }
             }
         }
