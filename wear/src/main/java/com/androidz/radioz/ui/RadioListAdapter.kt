@@ -1,11 +1,10 @@
 package com.androidz.radioz.ui
 
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.androidz.radioz.databinding.RadioListItemBinding
+import timber.log.Timber
 
 class RadioListAdapter(private val radioStations: List<RadioStationModel>) :
     RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
@@ -27,16 +26,16 @@ class RadioListAdapter(private val radioStations: List<RadioStationModel>) :
     inner class RadioItemViewHolder(private val radioItemViewBinding: RadioListItemBinding) :
         RecyclerView.ViewHolder(radioItemViewBinding.root) {
 
-        private val TAG: String = RadioItemViewHolder::class.java.name
-
         init {
-            radioItemViewBinding.radioItem.setOnClickListener(View.OnClickListener {
-                Log.e(TAG, ": ")
-            })
+            with(radioItemViewBinding) {
+                radioItem.setOnClickListener {
+                    Timber.d("Clicked: ${radioItem.text}")
+                }
+            }
         }
 
         fun updateUi(radioStationModel: RadioStationModel) {
-            radioItemViewBinding.radioItem.text = radioStationModel.name
+            with(radioItemViewBinding) { radioItem.text = radioStationModel.name }
         }
     }
 }
