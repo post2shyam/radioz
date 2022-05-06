@@ -17,7 +17,9 @@ class MainActivity : Activity() {
 
         val radioStations = dummyRadioStationList()
         binding.recyclerLauncherView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerLauncherView.adapter = RadioListAdapter(radioStations)
+
+
+        binding.recyclerLauncherView.adapter = RadioListAdapter(RadioPlayer(this).apply { open() }, radioStations)
     }
 
     private fun dummyRadioStationList(): List<RadioStationModel> {
