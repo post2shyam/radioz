@@ -1,17 +1,20 @@
 package com.androidz.radioz.system
 
 import android.app.Application
-import com.androidz.radioz.BuildConfig
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
+import javax.inject.Inject
 
+@HiltAndroidApp
 class MainApplication : Application() {
+
+    @Inject
+    lateinit var timberTree: Timber.Tree
+
     override fun onCreate() {
         super.onCreate()
         enableLogger()
     }
 
-    private fun enableLogger() {
-        val timberTree = if (BuildConfig.DEBUG) AppDebugTree() else AppReleaseTree()
-        Timber.plant(timberTree)
-    }
+    private fun enableLogger() = Timber.plant(timberTree)
 }
