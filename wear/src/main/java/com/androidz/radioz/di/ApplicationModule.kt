@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApplicationModule {
-
     @Singleton
     @Provides
     fun providesApplication(@ApplicationContext appContext: Context): MainApplication =

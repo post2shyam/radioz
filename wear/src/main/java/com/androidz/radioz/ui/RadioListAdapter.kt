@@ -3,11 +3,12 @@ package com.androidz.radioz.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.androidz.radioz.data.Player
 import com.androidz.radioz.databinding.RadioListItemBinding
 import timber.log.Timber
 
 class RadioListAdapter(
-    private val radioPlayer: RadioPlayer,
+    private val player: Player,
     private val radioStations: List<RadioStationModel>
 ) : RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
 
@@ -34,9 +35,9 @@ class RadioListAdapter(
                 radioItem.setOnClickListener {
                     Timber.d("Clicked: ${radioItem.text}")
                     //TODO: Send a hardcoded URI as of now, stop() seems not to work
-                    radioPlayer.stop()
-                    radioPlayer.setUrl("https://0n-90s.radionetz.de/0n-90s.mp3?listening-from-radio-garden=1651757650")
-                    radioPlayer.play()
+                    player.stop()
+                    player.setUrl("https://0n-90s.radionetz.de/0n-90s.mp3")
+                    player.play()
                 }
             }
         }

@@ -3,15 +3,20 @@ package com.androidz.radioz.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.androidz.radioz.data.Player
 import com.androidz.radioz.databinding.ActivityMainBinding
 import com.androidz.radioz.system.MainApplication
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var player: Player
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +29,8 @@ class MainActivity : AppCompatActivity() {
         val radioStations = dummyRadioStationList()
         binding.recyclerLauncherView.layoutManager = LinearLayoutManager(this)
 
-        binding.recyclerLauncherView.adapter =
-            RadioListAdapter(RadioPlayer(this).apply { open() }, radioStations)
+        player.open();
+        binding.recyclerLauncherView.adapter = RadioListAdapter( player, radioStations)
     }
 
     private fun dummyRadioStationList(): List<RadioStationModel> {
