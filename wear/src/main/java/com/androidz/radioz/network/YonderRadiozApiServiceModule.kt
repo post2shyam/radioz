@@ -1,7 +1,6 @@
-package com.androidz.radioz.di
+package com.androidz.radioz.network
 
 import com.androidz.radioz.BuildConfig
-import com.androidz.radioz.network.YonderRadiozApiService
 import com.androidz.radioz.repository.Repository
 import dagger.Module
 import dagger.Provides
