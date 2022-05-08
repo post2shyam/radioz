@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.androidz.radioz.databinding.RadioListItemBinding
+import dagger.hilt.android.scopes.ActivityRetainedScoped
 import timber.log.Timber
 import javax.inject.Inject
 
+@ActivityRetainedScoped
 class RadioListAdapter @Inject constructor() :
     RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
 
