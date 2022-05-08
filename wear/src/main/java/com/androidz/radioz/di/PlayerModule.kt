@@ -2,7 +2,7 @@ package com.androidz.radioz.di
 
 import com.androidz.radioz.data.Player
 import com.androidz.radioz.application.MainApplication
-import com.androidz.radioz.ui.RadioPlayer
+import com.androidz.radioz.system.RadioPlayer
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

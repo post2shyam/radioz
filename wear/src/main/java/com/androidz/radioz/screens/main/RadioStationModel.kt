@@ -1,3 +1,3 @@
-package com.androidz.radioz.ui
+package com.androidz.radioz.screens.main
 
 data class RadioStationModel(val name: String) {}

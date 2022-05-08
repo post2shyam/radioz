@@ -1,4 +1,4 @@
-package com.androidz.radioz.ui
+package com.androidz.radioz.screens.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

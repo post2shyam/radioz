@@ -1,4 +1,4 @@
-package com.androidz.radioz.ui
+package com.androidz.radioz.system
 
 import android.content.Context
 import com.androidz.radioz.data.Player
