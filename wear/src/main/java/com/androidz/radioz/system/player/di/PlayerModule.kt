@@ -1,4 +1,4 @@
-package com.androidz.radioz.system
+package com.androidz.radioz.system.player.di
 
 import com.androidz.radioz.data.Player
 import com.androidz.radioz.application.MainApplication

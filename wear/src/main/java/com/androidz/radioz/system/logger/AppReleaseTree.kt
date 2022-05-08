@@ -1,4 +1,4 @@
-package com.androidz.radioz.system
+package com.androidz.radioz.system.logger
 
 import android.util.Log
 import timber.log.Timber
