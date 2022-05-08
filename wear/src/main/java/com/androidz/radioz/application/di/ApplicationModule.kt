@@ -1,10 +1,10 @@
-package com.androidz.radioz.di
+package com.androidz.radioz.application.di
 
 import android.content.Context
 import com.androidz.radioz.BuildConfig
+import com.androidz.radioz.application.MainApplication
 import com.androidz.radioz.system.AppDebugTree
 import com.androidz.radioz.system.AppReleaseTree
-import com.androidz.radioz.system.MainApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

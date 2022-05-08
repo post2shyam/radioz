@@ -3,14 +3,14 @@ package com.androidz.radioz.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.androidz.radioz.data.Player
 import com.androidz.radioz.databinding.RadioListItemBinding
 import timber.log.Timber
+import javax.inject.Inject
 
-class RadioListAdapter(
-    private val player: Player,
-    private val radioStations: List<RadioStationModel>
-) : RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
+class RadioListAdapter @Inject constructor() :
+    RecyclerView.Adapter<RadioListAdapter.RadioItemViewHolder>() {
+
+    private var radioStations: List<RadioStationModel> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RadioItemViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -35,9 +35,9 @@ class RadioListAdapter(
                 radioItem.setOnClickListener {
                     Timber.d("Clicked: ${radioItem.text}")
                     //TODO: Send a hardcoded URI as of now, stop() seems not to work
-                    player.stop()
-                    player.setUrl("https://0n-90s.radionetz.de/0n-90s.mp3")
-                    player.play()
+//                    player.stop()
+//                    player.setUrl("https://0n-90s.radionetz.de/0n-90s.mp3")
+//                    player.play()
                 }
             }
         }

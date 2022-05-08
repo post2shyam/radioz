@@ -1,4 +1,4 @@
-package com.androidz.radioz.system
+package com.androidz.radioz.application
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
