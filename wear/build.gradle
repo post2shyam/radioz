@@ -44,6 +44,11 @@ dependencies {
     //Logging framework
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
+    //Rest API enabler
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
+
     //TODO: Audio playback functionality - Yet to filter out the exact ones required
     implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
     implementation 'com.google.android.exoplayer:exoplayer-core:2.17.1'
