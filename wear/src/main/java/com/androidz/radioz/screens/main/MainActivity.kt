@@ -24,15 +24,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Timber.e("${MainApplication::class}")
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val radioStations = dummyRadioStationList()
         binding.recyclerLauncherView.layoutManager = LinearLayoutManager(this)
 
-        player.open();
+        player.open()
         binding.recyclerLauncherView.adapter = radioListAdapter
     }
 
