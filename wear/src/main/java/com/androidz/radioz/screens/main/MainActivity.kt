@@ -1,9 +1,9 @@
 package com.androidz.radioz.screens.main
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.androidz.radioz.application.MainApplication
 import com.androidz.radioz.data.Player
 import com.androidz.radioz.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,30 +21,28 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var radioListAdapter: RadioListAdapter
 
+    private val mainActivityViewModel: MainActivityViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val radioStations = dummyRadioStationList()
-        binding.recyclerLauncherView.layoutManager = LinearLayoutManager(this)
-
-        player.open()
-        binding.recyclerLauncherView.adapter = radioListAdapter
+        setupUi()
+        setupObservers()
     }
 
-    private fun dummyRadioStationList(): List<RadioStationModel> {
-        return listOf(
-            RadioStationModel("First Station"),
-            RadioStationModel("Second Station"),
-            RadioStationModel("Third Station"),
-            RadioStationModel("4 Station"),
-            RadioStationModel("5 Station"),
-            RadioStationModel("6 Station"),
-            RadioStationModel("7 Station"),
-            RadioStationModel("8 Station"),
-            RadioStationModel("9 Station")
-        )
+    private fun setupObservers() {
+        mainActivityViewModel.getFavoriteStations().observe(this) {
+            Timber.e("$ { it }")
+        }
+    }
+
+    private fun setupUi() {
+        with(binding.recyclerLauncherView) {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = radioListAdapter
+        }
     }
 }

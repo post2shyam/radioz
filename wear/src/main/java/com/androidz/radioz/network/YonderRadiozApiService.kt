@@ -1,9 +1,9 @@
 package com.androidz.radioz.network
 
-import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 interface YonderRadiozApiService {
-    @GET
-    suspend fun getFirstRadioStation(): Call<String>
+    @GET("/favoritestations")
+    suspend fun getFavoriteRadioStations(): Response<FavoriteStationsModel>
 }

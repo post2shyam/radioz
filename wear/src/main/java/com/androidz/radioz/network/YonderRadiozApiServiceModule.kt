@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -27,19 +28,21 @@ object YonderRadiozApiServiceModule {
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder().apply {
-            if (BuildConfig.DEBUG) {
-                this.addInterceptor(httpLoggingInterceptor) // Should always be the last interceptor
-            }
+//            if (BuildConfig.DEBUG) {
+//                this.addInterceptor(httpLoggingInterceptor) // Should always be the last interceptor
+//            }
         }.build()
     }
 
     //For every request, return the same Retrofit instance
     @Singleton
     @Provides
-    fun providesBackEndServer(okHttpClient: OkHttpClient): Retrofit.Builder {
+    fun providesBackEndServer(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
+            .build()
     }
 
     @Singleton
@@ -51,5 +54,4 @@ object YonderRadiozApiServiceModule {
     @Provides
     fun providesRepository(yonderRadiozApiService: YonderRadiozApiService) =
         Repository(yonderRadiozApiService)
-
 }
