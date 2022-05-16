@@ -1,5 +1,6 @@
 package com.androidz.radioz.screens.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.androidz.radioz.data.Player
 import com.androidz.radioz.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -33,16 +33,22 @@ class MainActivity : AppCompatActivity() {
         setupObservers()
     }
 
-    private fun setupObservers() {
-        mainActivityViewModel.getFavoriteStations().observe(this) {
-            Timber.e("$ { it }")
-        }
-    }
-
     private fun setupUi() {
         with(binding.recyclerLauncherView) {
             layoutManager = LinearLayoutManager(this@MainActivity)
             adapter = radioListAdapter
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun setupObservers() {
+        mainActivityViewModel.getFavoriteStations().observe(this) {
+            radioListAdapter.radioStations = transformToRadioStationModels(it)
+            radioListAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun transformToRadioStationModels(radioStations: List<String>): List<RadioStationModel> {
+        return radioStations.map { RadioStationModel(it) }
     }
 }

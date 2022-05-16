@@ -12,7 +12,6 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 @Module
 @InstallIn(ActivityRetainedComponent::class)
 object PlayerModule {
-    //For every request, return the same player instance
     @ActivityRetainedScoped
     @Provides
     fun providesRadioPlayer(mainApplication: MainApplication): Player {

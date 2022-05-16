@@ -9,16 +9,16 @@ import com.google.android.exoplayer2.source.MediaSourceFactory
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSource
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import javax.inject.Inject
 
-class RadioPlayer(private val context: Context) : Player {
+@ActivityRetainedScoped
+class RadioPlayer @Inject constructor(context: Context) : Player {
 
-    private lateinit var simpleExoPlayer: ExoPlayer
+    private var simpleExoPlayer: ExoPlayer
+    private val mediaDataSourceFactory: DataSource.Factory = DefaultDataSource.Factory(context)
 
-    private lateinit var mediaDataSourceFactory: DataSource.Factory
-
-    override fun open() {
-        mediaDataSourceFactory = DefaultDataSource.Factory(context)
-
+    init {
         val mediaSourceFactory: MediaSourceFactory =
             DefaultMediaSourceFactory(mediaDataSourceFactory)
 
