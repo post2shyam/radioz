@@ -28,9 +28,9 @@ object YonderRadiozApiServiceModule {
     @Provides
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder().apply {
-//            if (BuildConfig.DEBUG) {
-//                this.addInterceptor(httpLoggingInterceptor) // Should always be the last interceptor
-//            }
+            if (BuildConfig.DEBUG) {
+                this.addInterceptor(httpLoggingInterceptor) // Should always be the last interceptor
+            }
         }.build()
     }
 
